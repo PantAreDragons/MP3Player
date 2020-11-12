@@ -3,4 +3,8 @@ testing
 This is a reply to your test message.
 This is a reply to the reply of the test message.
 This is me pushing it. Pushing it real good.
+<<<<<<< Updated upstream
 githug GIT
+=======
+IT WORKSSSSS
+>>>>>>> Stashed changes
