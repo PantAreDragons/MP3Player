@@ -37,13 +37,25 @@ enum keycmds_t {
 
 // Your keypad key assignments from Lab 4.
 static const uint8_t keymap[4][4] = {
+                                     {'1','2','3','A'},
+                                     {'4','5','6','B'},
+                                     {'7','8','9','C'},
+                                     {'0','F','E','D'},
 };
 
 // Your keypad pin assignments from Lab 4.
 const struct portinfo rowdef = {
+                                //Kevin Acosta Rowdef
+                                /*{GPIO_PIN_7, GPIO_PIN_6, GPIO_PIN_2, GPIO_PIN_0},
+                                 GPIO_PORTK,
+                                 */
+
 };
 
 const struct portinfo columndef = {
+                                   //TODO: find coldef meaning
+                                   //Kevin Acosta: Could not find columndef within my lab4 folder
+
 };
 
 // Return key value upon initial key press.  Since keys are

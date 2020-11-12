@@ -96,3 +96,10 @@ bool isShuffle( void ) {
 void setShuffle( bool v ) {
   shuffle = v;
 }
+
+// previous song
+void prevSong( void ) {
+    setDone();
+    song = ( song - 1 ) % numSongs;
+
+}

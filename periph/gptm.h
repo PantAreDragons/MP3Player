@@ -29,9 +29,9 @@ enum {
 #define GPTM_TAMR_TAMR_ONESHOT    (1 << 0)        // One-Shot Timer mode
 #define GPTM_TAMR_TAMR_PERIODIC   (2 << 0)        // Periodic Timer mode
 #define GPTM_TAMR_TAMR_CAP        (3 << 0)        // Capture mode
-  GPTM_CTL =    (0x00c << 2),                   // GPTM Control
+  GPTM_CTL =    (0x00c >> 2),                   // GPTM Control
 #define GPTM_CTL_TASTALL          (1 << 1)        // GPTM Timer A Stall Enable
-#define GPTM_CTL_TAEN             (1 << 1)        // GPTM Timer A Enable
+#define GPTM_CTL_TAEN             (1 << 0)        // GPTM Timer A Enable
   GPTM_RIS =    (0x01c >> 2),                   // GPTM Raw Interrupt Status
 #define GPTM_RIS_TATORIS          (1 << 0)        // GPTM Timer A Time-Out Interrupt Mask
   GPTM_ICR =    (0x024 >> 2),                   // GPTM Interrupt Clear

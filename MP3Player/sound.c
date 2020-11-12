@@ -212,8 +212,17 @@ bool isSoundFinished( void ) {
 
 // Future implementation: increase volume
 void upVolume( void ) {
-}
 
+    //code that changes value of volume
+    if (volume <= MAXVOLUME){
+        volume++;
+    }
+}
+//still need to work on code that calls the volume functions
 // Future implementation: decrease volume
 void downVolume( void ) {
+
+    if (volume > -1){
+            volume--;
+        }
 }
