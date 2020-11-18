@@ -16,7 +16,8 @@
 #include "lcd.h"
 #include "ssi1_DAC.h"
 #include "timer2A.h"
-
+#include "UI.c"
+#include "UI.h" //not sure if ui header should be here as well
 // FatFs
 #include "ff.h"
 
@@ -62,7 +63,7 @@ main() {
   initLCD( true );
   initSSI1();
   initTimer2A();
-
+  initUI(); //call to ui file itself
   // Initialize structure.
   FATFS fs; f_mount( &fs, "", 0 );
 
