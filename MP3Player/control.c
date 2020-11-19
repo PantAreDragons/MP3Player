@@ -118,7 +118,32 @@ void setShuffle( bool v ) {
 
 // previous song
 void prevSong( void ) {
-    setDone();
-    song = ( song - 1 ) % numSongs;
+	if (shuffle == true) 
+	{
+		//need a boolean variable to set when it was shuffled to undo the shuffle
+		if (there was no previous songs)
+		{
+			song = (numSongs + (song - 1)) % numSongs;            
+			setDone();                                      
+			setSong(song);
+		}
+		else {
+			song = previous1;
+			previous1 = previous2;
+			previous2 = previous3;
+			//previous3 = something
+			setDone();
+			setSong(song);
+		}
+	}
+	
+	else if (shuffle == false)
+	{
+		setDone();
+		song = (song - 1) % numSongs;
+		//setDone();
+		setSong(song);
+	}
+
 
 }
