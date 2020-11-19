@@ -22,9 +22,28 @@ static bool paused = false;
 // Indicates if the MP3 player is in song shuffle mode.
 static bool shuffle = false;
 
+static uint8_t previous1;
+static uint8_t previous2;
+static uint8_t previous3;
+
 // Private procedure for selecting the next song in shuffle mode.
 static uint8_t getShuffle( uint8_t song ) {
-  return song;
+	uint8_t temp;
+
+	randSong = GPTM_TIMER3[GPTM_TAV] % numSongs;
+	songSums = previous1 + previous2 + previous3;
+
+	if (songSums == (numSongs * 3)) // if no songs are in the variables; set from setNumSongs()
+	{
+		previous1 = song;
+
+	}
+	else {
+		previous3 = previous2;  //pushes songs through the variables
+		previous2 = previous1;
+		previous1 = song;
+	}
+  return randSong; //since here we want to return the song we found out
 }
 
 // Return the number of the song to play.  Initially, just

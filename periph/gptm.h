@@ -41,6 +41,7 @@ enum {
 #define GPTM_TAPR_TAPSR_M         (0xff << 0)     // GPTM Timer A Prescale Mask
   GPTM_IMR =    (0x018 >> 2),
 #define GPTM_IMR_TATO_IM          (1 << 0)   //GPTM Inturrupt mask
+  GPTM_TAV = (0x050 >> 2),
 };
 
 #endif // _GPTM_H
