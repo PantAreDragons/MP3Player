@@ -5,6 +5,10 @@
  *  Modified on: Jul 19, 2019
  *  Modified on: May 29, 2020
  *      Author: khughes
+ *
+ *
+ *      song is not stored like a map
+ *
  */
 
 #include <stdint.h>
@@ -16,7 +20,6 @@
 #include "lcd.h"
 #include "ssi1_DAC.h"
 #include "timer2A.h"
-#include "UI.c"
 #include "UI.h" //not sure if ui header should be here as well
 // FatFs
 #include "ff.h"
@@ -75,8 +78,23 @@ main() {
   while( true ) {
     // Get the next file from the MicroSD card.
     uint8_t song = getSong();
-
-    // Send the file to the MP3 decoder
     playSong( song );
+//code meant to be revised later
+    //write if statements for each possible keypress that could warrant a change
+    //pseudocode -------------------------------------------------------------------
+    if(user entered sequence){ //set song explicitly
+        setSong(v); //v = value, not declared
+    }
+    //see if user chose to setDone
+    //send this to control.c and implement to getShuffle since getshuffle already checks
+    if(isDone() == true){
+        song = getSong();
+        playSong(song);
+    }
+
+
+    //------------------------------------------------------------------------------
+    // Send the file to the MP3 decoder
+
   }
 }
