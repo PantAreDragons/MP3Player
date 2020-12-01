@@ -22,13 +22,42 @@ static bool paused = false;
 // Indicates if the MP3 player is in song shuffle mode.
 static bool shuffle = false;
 
+static bool queuedSong = false;
+
 static uint8_t previous1;
 static uint8_t previous2;
 static uint8_t previous3;
 
+
+static uint8_t queueMusic(uint8_t chosenOne)
+{
+	//Lets see if we can get the music to queue one ahead.
+	//variable user will need to choose
+	if (chosenOne != NULL)
+	{
+		
+		previous3 = previous2;  //pushes songs through the variables
+		previous2 = previous1;
+		previous1 = song;       //stores the music that was last and returns the chosen song
+
+		return song;
+
+	}
+
+	else
+	{
+		previous3 = previous2;  //pushes songs through the variables
+		previous2 = previous1;
+		previous1 = song;
+		song = song++;
+
+		return song;
+	}
+		
+}
 // Private procedure for selecting the next song in shuffle mode.
 static uint8_t getShuffle( uint8_t song ) {
-	uint8_t temp;
+	uint8_t randSong;
 
 	randSong = GPTM_TIMER3[GPTM_TAV] % numSongs;
 	songSums = previous1 + previous2 + previous3;
@@ -56,6 +85,11 @@ uint8_t getSong( void ) {
   if( initial == false ) {
     initial = true;
     return song = 0;
+  }
+
+  if (queuedSong == true)
+  {
+	  queueMusic()//come back to this
   }
 
   // Otherwise pick the next song to play.
@@ -114,6 +148,13 @@ bool isShuffle( void ) {
 // Set state of shuffle mode.
 void setShuffle( bool v ) {
   shuffle = v;
+}
+
+void setQueue(bool select) {
+	queuedSong = select;
+}
+bool isQueued(void) {
+	return queue;
 }
 
 // previous song

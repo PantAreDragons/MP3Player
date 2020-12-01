@@ -107,6 +107,9 @@ void UIHandler( void ) {
     case SKIP_FORWARD:  // 'F'
       setDone();
       break;
+	case Queue:  //have to find out how queue will be selected to enable this
+	  setQueue(isQueued() == false);
+	  break;
     default:            // Numeric keys
       break;
     }
