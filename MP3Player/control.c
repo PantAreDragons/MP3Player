@@ -121,7 +121,7 @@ void prevSong( void ) {
 	if (shuffle == true) 
 	{
 		//need a boolean variable to set when it was shuffled to undo the shuffle
-		if (there was no previous songs)
+		if (previous1 + previous2 + previous3 == (numSongs*3)) //checking if songs are stored in each of the previous songs
 		{
 			song = (numSongs + (song - 1)) % numSongs;            
 			setDone();                                      
