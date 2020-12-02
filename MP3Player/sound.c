@@ -218,6 +218,17 @@ void upVolume( void ) {
         volume++;
     }
 }
+//KEVIN: SET SKIP 10SEC, ff or rewind
+static void fastForward( void ){
+    dataLength = datalength + 10;
+}
+
+static void rewind (void){
+    datalength = datalength - 10;
+}
+
+//END KEVIN CODE.
+
 //still need to work on code that calls the volume functions
 // Future implementation: decrease volume
 void downVolume( void ) {
