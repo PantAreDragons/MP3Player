@@ -86,6 +86,22 @@ main() {
         setSong(v); //v = value, not declared
     }
     //see if user chose to setDone
+    //KEVIN: IMPLEMENTATION OF ADDITIONAL LCD INFO
+    clearLCD(); //clear LCD so it loops
+    positionLCD(0, 0); //should be upper left
+    stringLCD("Now Playing: "+ getSong); //should get song name and place it in LCD
+    positionLCD(7,7); //hopefully bottom right of screen, dont know max pixel amount
+    stringLCD("VOL: " + volume); //uses volume from sound.c to show volume level
+    if (paused == true){
+        positionLCD(7,0);
+        stringLCD("PAUSED");
+    }
+    else {
+        position(7,0);
+        stringLCD("PLAYING");
+    }
+//END "diSPLAY ADDITIONAL STATUS INFO"
+
     //send this to control.c and implement to getShuffle since getshuffle already checks
     if(isDone() == true){
         song = getSong();
