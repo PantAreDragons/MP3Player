@@ -74,6 +74,12 @@ main() {
   uint8_t numSongs = countMP3();
   setNumSongs( numSongs );
 
+  //Cordero: Saving input sequence for later
+  uint16_t key1 = 'X';
+  uint16_t key2 = 'X';
+  uint8_t song_out;
+
+
   // Obligatory endless loop.
   while( true ) {
     // Get the next file from the MicroSD card.
@@ -82,8 +88,31 @@ main() {
 //code meant to be revised later
     //write if statements for each possible keypress that could warrant a change
     //pseudocode -------------------------------------------------------------------
-    if(user entered sequence){ //set song explicitly
-        setSong(v); //v = value, not declared
+       while(isPaused()){ //MP3 must be paused to allow input sequence.
+        if (UIkey() = 'E'){
+            if ((key1 == 'X') && (key2 == 'X')){ //No value entered or we cleared it.
+                setPaused(false);                   //Prepare to resume playing after 'E' key
+                break;                              //Exit loop, resume normal function
+            }
+            else {
+            song_out = (uint8_t)(key2 >> 8);    // casting key2 as 8 bit and discarding the upper 8 bits after shifting
+            song_out *= 10;                     // multiplying result by 10 to get 10's place
+            song_out += (uint8_t)(key1 >> 8);   //adding 1's place to result
+            song_out -= 1;                      //Machines start at 00. A human's not going to know better. So song "1" is "0"
+                if (song_out <= numSongs){           //Check to make sure song number is valid
+                setSong(song_out);                //If true, set the song
+                }
+            setPaused(false);                   //End
+            }
+        if (UIkey() = 'C'){ //return to false value. Not planning to load 100 songs on this thing.
+        key1 = 'X';
+        key2 = 'X';
+        }
+        else{                   //I'm only planning to operate on double-digits for this MP3 player.
+        key2 = key1;            //Cycles the previous keypress (if valid) into leftmost position
+        key1 = UIkey();         //Obtain new keypress and save
+        }
+        }
     }
     //see if user chose to setDone
     //KEVIN: IMPLEMENTATION OF ADDITIONAL LCD INFO

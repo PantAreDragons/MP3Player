@@ -40,7 +40,7 @@ static const uint8_t keymap[4][4] = {
                                      {'1','2','3','A'},
                                      {'4','5','6','B'},
                                      {'7','8','9','C'},
-                                     {'0','F','E','D'},
+                                     {'E','0','F','D'},
 };
 
 // Your keypad pin assignments from Lab 4.
